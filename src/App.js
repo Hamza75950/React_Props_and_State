@@ -8,8 +8,8 @@ function App() {
       <NavBar hName= "Textutils"  />
       <div className="container my-3">
         <Form heading = "Enter text to analyse:" />
-
       </div>
+     
     </>
   );
 }

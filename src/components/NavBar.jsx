@@ -1,10 +1,12 @@
 export default function NavBar(props) {
   return (
     <>
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg ">
+      <nav
+        className={`navbar navbar-${props.mode} bg-${props.mode} navbar-expand-lg `}
+      >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-          {props.hName}
+            {props.hName}
           </a>
           <button
             className="navbar-toggler"
@@ -31,15 +33,18 @@ export default function NavBar(props) {
               </li>
             </ul>
             <form className="d-flex" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-primary" type="submit">
-                Search
-              </button>
+              <div className={`form-check form-switch text-${props.mode === "light"?"dark":"light"}`}>
+                <input
+                  onClick= {props.toggle}
+                  className="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="flexSwitchCheckDefault"
+                />
+                <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+                  Dark Mode
+                </label>
+              </div>
             </form>
           </div>
         </div>

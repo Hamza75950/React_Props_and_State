@@ -19,16 +19,23 @@ export default function Form(props) {
     );
     let capitalizedText = capitalized.join(" ");
     setText(capitalizedText); // Assuming setText is defined elsewhere to update the text
+    props.showAlert("Text is in capital case","success")
   }
 
   function handleUpperClick() {
     setText(text.toUpperCase());
+    props.showAlert("Text is in uppercase","success")
+
   }
   function handleLowerClick() {
     setText(text.toLowerCase());
+    props.showAlert("Text is in lowercase","success")
+
   }
   function handleClearClick() {
     setText("");
+    props.showAlert("Text has been cleared","success")
+
   }
 
   function handleCopyClick() {
@@ -37,6 +44,8 @@ export default function Form(props) {
     copyText.select();
     // Copy the text inside the text field
     navigator.clipboard.writeText(copyText.value);
+    props.showAlert("Text is copied to clipboard","success")
+
   }
 
   // function handleClearClick(){

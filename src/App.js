@@ -5,33 +5,46 @@ import Form from "./components/Form";
 import NavBar from "./components/NavBar";
 import Alert from "./components/Alert";
 
+
 function App() {
   const [mode,setMode] = useState("light");
   const [alert,setAlert] = useState(null);
 
   const showAlert = (message,type) =>{
-    setAlert({
-      msg: message,
-      type: type,
-    })
-
-    setTimeout(() => {
-      setAlert(null)
-    }, 1500);
+      setAlert({
+        msg: message,
+        type: type,
+      })
+  
+      setTimeout(() => {
+        setAlert(null)
+      }, 1500);
     
   }
 
-  const Toggle=()=>{
-    if (mode === "light") {
-      document.body.style.backgroundColor = "#202124";
-      setMode("dark")
-      showAlert("Dark mode activated","success")      
-    }
-    else {
+  const Toggle=(event)=>{
+    const id = event.target.id;
+    if (id === "light") {
       document.body.style.backgroundColor = "white";
       setMode("light")
-      showAlert("Light mode activated","success")            
+      showAlert("Theme is set to Light","success")      
     }
+    else if (id === "dark") {
+      document.body.style.backgroundColor = "#202124";
+      setMode("dark")
+      showAlert("Theme is set to Dark ","success")      
+    }
+    else if (id === "primary") {
+      document.body.style.backgroundColor = "#020e30";
+      setMode("primary")
+      showAlert("Theme is set to Blue","success")      
+    }
+    else if (id === "danger") {
+      document.body.style.backgroundColor = "#420707";
+      setMode("danger")
+      showAlert("Theme is set to Red","success")      
+    }
+    
   }
   
 

@@ -78,7 +78,8 @@ export default function Form(props) {
             rows="8"
           ></textarea>
         </div>
-
+        
+        <div>
         <button
           type="button"
           onClick={handleUpperClick}
@@ -114,6 +115,8 @@ export default function Form(props) {
         >
           Clear Text
         </button>
+
+        </div>
 
         <p>
           {" "}

@@ -1,39 +1,15 @@
-import { useState } from "react";
-
-export default function About() {
-    
-    const [btnText,setBtnText] = useState("Enable Dark Mode")
-    const [myStyle,setMyStyle] = useState({
-        color:"black",
-        backgroundColor:"white",
-    })
 
 
-    const handleStyle=()=>{
-        if(myStyle.color === "black"){
-             setMyStyle ({
-                color: "white",
-                backgroundColor : "black"
-            })
-            setBtnText("Enable Light Mode")
-        }
-        else{
-             setMyStyle( {
-                color: "black",
-                backgroundColor : "white"
-            })
-            setBtnText("Enable Dark Mode")
-        }
-    }
-    
+export default function About(props) {
+
     
   return (
-    <div className="container" style={myStyle}>
+    <div className = {`text-${props.mode === "light" ? "dark" : "light"} container`}>
         <h1>About Us</h1>
-      <div className="accordion" style={myStyle} id="accordionExample">
-        <div className="accordion-item" style={myStyle}>
+      <div className= "accordion"  id="accordionExample">
+        <div className="accordion-item" >
           <h2 className="accordion-header">
-            <button style={myStyle}
+            <button 
               className="accordion-button"
               type="button"
               data-bs-toggle="collapse"
@@ -62,10 +38,9 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="accordion-item" style={myStyle}>
+        <div className="accordion-item" >
           <h2 className="accordion-header">
             <button
-                style={myStyle}
               className="accordion-button collapsed"
               type="button"
               data-bs-toggle="collapse"
@@ -93,10 +68,10 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="accordion-item" style={myStyle}>
+        <div className="accordion-item">
           <h2 className="accordion-header">
             <button
-                style={myStyle}
+                
               className="accordion-button collapsed"
               type="button"
               data-bs-toggle="collapse"
@@ -126,7 +101,7 @@ export default function About() {
         </div>
       </div>
       
-      <button className="btn btn-primary my-2" onClick={handleStyle} >{btnText}</button>
+     
 
       
     </div>

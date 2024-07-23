@@ -65,7 +65,7 @@ export default function Form(props) {
 
   return (
     <>
-      <div className={`text-${props.mode === "light" ? "dark" : "light"}`}>
+      <div className=  {`text-${props.mode === "light" ? "dark" : "light"} container`}>
         <div className="mb-3">
           <h1>{props.heading}</h1>
           <textarea

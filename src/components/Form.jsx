@@ -50,11 +50,11 @@ export default function Form(props) {
     if (text === "") {
       props.showAlert("please enter text in text box", "warning");
     } else {
-      var copyText = document.getElementById("Box1");
-      // Select the text field
-      copyText.select();
+      // var copyText = document.getElementById("Box1");
+      // // Select the text field
+      // copyText.select();
       // Copy the text inside the text field
-      navigator.clipboard.writeText(copyText.value);
+      navigator.clipboard.writeText(text);
       props.showAlert("Text is copied to clipboard", "success");
     }
   }
@@ -65,7 +65,11 @@ export default function Form(props) {
 
   return (
     <>
-      <div className=  {`text-${props.mode === "light" ? "dark" : "light"} container`}>
+      <div
+        className={`text-${
+          props.mode === "light" ? "dark" : "light"
+        } container mt-4`}
+      >
         <div className="mb-3">
           <h1>{props.heading}</h1>
           <textarea
@@ -78,50 +82,59 @@ export default function Form(props) {
             rows="8"
           ></textarea>
         </div>
-        
-        <div>
-        <button
-          type="button"
-          onClick={handleUpperClick}
-          className="btn btn-primary mx-1"
-        >
-          Convert To Uppercase
-        </button>
-        <button
-          type="button"
-          onClick={handleLowerClick}
-          className="btn btn-primary "
-        >
-          Convert To Lower Case
-        </button>
-        <button
-          type="button"
-          onClick={handleCapitalClick}
-          className="btn btn-primary mx-1 my-1"
-        >
-          Capital Case
-        </button>
-        <button
-          type="button"
-          onClick={handleCopyClick}
-          className="btn btn-primary  my-1"
-        >
-          Copy
-        </button>
-        <button
-          type="button"
-          onClick={handleClearClick}
-          className="btn btn-primary mx-1"
-        >
-          Clear Text
-        </button>
 
+        <div>
+          <button
+            disabled={text.length === 0}
+            type="button"
+            onClick={handleUpperClick}
+            className="btn btn-primary mx-1 my-1"
+          >
+            Convert To Uppercase
+          </button>
+          <button
+            disabled={text.length === 0}
+            type="button"
+            onClick={handleLowerClick}
+            className="btn btn-primary "
+          >
+            Convert To Lower Case
+          </button>
+          <button
+            disabled={text.length === 0}
+            type="button"
+            onClick={handleCapitalClick}
+            className="btn btn-primary mx-1 my-1"
+          >
+            Capital Case
+          </button>
+          <button
+            disabled={text.length === 0}
+            type="button"
+            onClick={handleCopyClick}
+            className="btn btn-primary  my-1"
+          >
+            Copy
+          </button>
+          <button
+            disabled={text.length === 0}
+            type="button"
+            onClick={handleClearClick}
+            className="btn btn-primary mx-1"
+          >
+            Clear Text
+          </button>
         </div>
 
         <p>
           {" "}
-          Words = {text === "" ? 0 : text.split(" ").length} &nbsp; Characters ={" "}
-          {text.length}{" "}
+          Words ={" "}
+          {
+            text.split(/\s+/).filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          &nbsp; Characters = {text.length}{" "}
         </p>
         <p>total time to read = {0.008 * text.length} minutes</p>
 
